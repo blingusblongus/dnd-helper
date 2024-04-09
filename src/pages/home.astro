@@ -4,8 +4,8 @@ import Card from "../components/Card.astro";
 
 const user = Astro.locals.user;
 
-if (user) {
-    return Astro.redirect("/home");
+if (!user) {
+    return Astro.redirect("/");
 }
 ---
 
@@ -16,11 +16,15 @@ if (user) {
             role="list"
             class="flex w-full max-w-[400px] flex-col items-center items-stretch gap-4"
         >
-            <Card href="/login" title="Login" body="Get in here" />
             <Card
-                href="/signup"
-                title="Sign Up"
-                body="Become able to get in here"
+                href="/protected"
+                title="Protected Page"
+                body="You can't be here unless you're logged in"
+            />
+            <Card
+                href="/api/characters"
+                title="Characters API"
+                body="Snag some raw data on your characters, if they exist"
             />
         </ul>
     </main>
