@@ -1,0 +1,21 @@
+{
+  "name": "dnd-helper",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.5.10",
+    "@astrojs/db": "^0.10.2",
+    "astro": "^4.5.17",
+    "lucia": "^3.1.1",
+    "lucia-adapter-astrodb": "^0.0.8",
+    "oslo": "^1.2.0",
+    "typescript": "^5.4.4"
+  }
+}
