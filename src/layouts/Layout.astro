@@ -6,6 +6,7 @@ interface Props {
 }
 
 const { title } = Astro.props;
+const user = Astro.locals.user;
 ---
 
 <!doctype html>
@@ -21,9 +22,15 @@ const { title } = Astro.props;
     <body class="flex h-[100dvh] w-full flex-col">
         <div class="flex justify-between">
             <div><a href="/">DnD Helper</a></div>
-            <form method="post" action="/api/logout">
-                <button>Sign Out</button>
-            </form>
+            {
+                user ? (
+                    <form method="post" action="/api/logout">
+                        <button>Sign Out</button>
+                    </form>
+                ) : (
+                    <div />
+                )
+            }
         </div>
         <slot />
     </body>
