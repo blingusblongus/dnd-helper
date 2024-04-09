@@ -16,6 +16,14 @@
         "strictBindCallApply": true,
         "strictPropertyInitialization": true,
         "strictBootstrapComponents": true,
-        "strictTypeChecks": true
+        "strictTypeChecks": true,
+        "jsx": "react-jsx",
+        "jsxImportSource": "react",
+        "baseUrl": ".",
+        "paths": {
+            "@/*": [
+                "./src/*"
+            ]
+        }
     }
 }
