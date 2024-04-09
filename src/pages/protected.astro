@@ -1,0 +1,15 @@
+---
+const user = Astro.locals.user;
+if(!user){
+    return Astro.redirect("/login");
+}
+
+const username = user.username;
+---
+
+<html lang="en">
+    <body>
+        <h1>Protected Page</h1>
+        <div>Authorized: {username}</div>
+    </body>
+</html>

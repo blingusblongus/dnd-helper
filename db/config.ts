@@ -4,7 +4,11 @@ const User = defineTable({
     columns: {
         id: column.text({
             primaryKey: true,
-        })
+        }),
+        username: column.text({
+            unique: true,
+        }),
+        hashed_password: column.text(),
     }
 })
 
