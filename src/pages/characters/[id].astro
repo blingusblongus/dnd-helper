@@ -6,7 +6,11 @@ const user = Astro.locals.user;
 if(!user){
     return Astro.redirect("/login");
 }
-const charId = Astro.params.id;
+const charId = Astro.params['id'];
+
+if(!charId){
+    return new Response("No Character Id Provided", {status: 400})
+}
 
 const character = await db.select().from(Character).where(eq(Character.id, charId)).get();
 
@@ -14,13 +18,12 @@ if(!character){
     return new Response("No Character Found", {status: 400})
 }
 
-const statNames = ['str', 'wis', 'int', 'dex', 'cha'];
-
+const statNames: Array<keyof typeof character> = ['str', 'wis', 'int', 'dex', 'cha'];
 ---
 
 <Layout title={`Character Sheet`}>
     <h1>{character.name}</h1>
-    {statNames.map(stat => {
+    {statNames.map((stat: keyof typeof character) => {
         return <div>{stat.toUpperCase()}: {character[stat]}</div>
     })}
 </Layout>
