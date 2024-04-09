@@ -18,7 +18,7 @@ if(!character){
     return new Response("No Character Found", {status: 400})
 }
 
-const statNames: Array<keyof typeof character> = ['str', 'wis', 'int', 'dex', 'cha'];
+const statNames: Array<keyof typeof character> = ['str', 'wis', 'int', 'dex', 'cha', 'con'];
 ---
 
 <Layout title={`Character Sheet`}>

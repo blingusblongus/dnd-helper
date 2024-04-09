@@ -38,7 +38,10 @@ const Character = defineTable({
         wis: column.number(),
         cha: column.number(),
         dex: column.number(),
+        con: column.number(),
         lvl: column.number(),
+        currentHp: column.number(),
+        maxHp: column.number(),
     },
 });
 

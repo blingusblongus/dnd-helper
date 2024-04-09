@@ -27,7 +27,10 @@ export default async function seed() {
             int: 10,
             dex: 10,
             cha: 10,
+            con: 10,
             lvl: 1,
+            currentHp: 10,
+            maxHp: 10,
         },
     ]);
 }
