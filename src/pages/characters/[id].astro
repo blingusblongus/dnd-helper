@@ -1,0 +1,26 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import {Character, eq, db} from "astro:db";
+
+const user = Astro.locals.user;
+if(!user){
+    return Astro.redirect("/login");
+}
+const charId = Astro.params['id'];
+
+const character = await db.select().from(Character).where(eq(Character.id, charId)).get();
+
+if(!character){
+    return new Response("No Character Found", {status: 400})
+}
+
+const statNames = ['str', 'wis', 'int', 'dex', 'cha'];
+
+---
+
+<Layout title={`Character Sheet`}>
+    <h1>{character.name}</h1>
+    {statNames.map(stat => {
+        return <div>{stat.toUpperCase()}: {character[stat]}</div>
+    })}
+</Layout>
