@@ -1,0 +1,28 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { Character, db, eq } from "astro:db";
+
+const user = Astro.locals.user;
+
+if (!user) {
+    return Astro.redirect("/login");
+}
+
+const characters = await db
+    .select({ name: Character.name, id: Character.id })
+    .from(Character)
+    .where(eq(Character.userId, user.id));
+---
+
+<Layout title="Characters">
+    <h1>Choose a character:</h1>
+    {
+        characters.map((char) => {
+            return (
+                <div>
+                    <a href={`/characters/${char.id}`}>{char.name}</a>
+                </div>
+            );
+        })
+    }
+</Layout>
