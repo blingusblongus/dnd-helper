@@ -7,8 +7,6 @@ export async function POST(context: APIContext): Promise<Response> {
     const formData = await context.request.formData();
     const username = formData.get("username");
 
-    console.log(username);
-
     if (
         typeof username !== "string" ||
         username.length < 3 ||
@@ -30,8 +28,6 @@ export async function POST(context: APIContext): Promise<Response> {
             status: 400,
         });
     }
-
-    console.log(username, password);
 
     const existingUser = await db
         .select()
