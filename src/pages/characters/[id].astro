@@ -6,7 +6,7 @@ const user = Astro.locals.user;
 if(!user){
     return Astro.redirect("/login");
 }
-const charId = Astro.params['id'];
+const charId = Astro.params.id;
 
 const character = await db.select().from(Character).where(eq(Character.id, charId)).get();
 
