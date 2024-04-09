@@ -1,13 +1,10 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { LoginForm } from "../components/LoginComponent.tsx";
+---
 
-<html lang="en">
-    <body>
-        <h1>Sign in</h1>
-        <form method="post" action="/api/login">
-            <label for="username">Username</label>
-            <input id="username", name="username" />
-            <label for="password">Password</label>
-            <input id="password", name="password" />
-            <button>Continue</button>
-        </form>
-    </body>
-</html>
+<Layout title="Sign In">
+    <div class="flex h-full w-full items-center justify-center">
+        <LoginForm />
+    </div>
+</Layout>
