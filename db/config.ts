@@ -42,6 +42,55 @@ const Character = defineTable({
         lvl: column.number({ default: 1 }),
         currentHp: column.number(),
         maxHp: column.number(),
+        race: column.text(),
+        class: column.text(),
+        ac: column.number(),
+        diety: column.text({ optional: true }),
+        alignment: column.text({ optional: true }),
+        gender: column.text({ optional: true }),
+    },
+});
+
+const CharacterSkill = defineTable({
+    columns: {
+        id: column.number({ primaryKey: true }),
+        characterId: column.text({
+            references: () => Character.columns.id,
+        }),
+        skillName: column.text({
+            references: () => Skill.columns.name,
+        }),
+        proficiency: column.boolean({ default: false }),
+        adv: column.boolean({ default: false }),
+    },
+});
+
+const Skill = defineTable({
+    columns: {
+        name: column.text({ primaryKey: true }),
+        ability: column.text({
+            references: () => Ability.columns.name,
+        }),
+    },
+});
+
+const Ability = defineTable({
+    columns: {
+        name: column.text({ primaryKey: true }),
+    },
+});
+
+const CharacterSave = defineTable({
+    columns: {
+        id: column.number({ primaryKey: true }),
+        characterId: column.text({
+            references: () => Character.columns.id,
+        }),
+        ability: column.text({
+            references: () => Ability.columns.name,
+        }),
+        proficiency: column.boolean({ default: false }),
+        adv: column.boolean({ default: false }),
     },
 });
 
@@ -51,5 +100,9 @@ export default defineDb({
         User,
         Session,
         Character,
+        Skill,
+        CharacterSkill,
+        CharacterSave,
+        Ability,
     },
 });
